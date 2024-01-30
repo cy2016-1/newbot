@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find base_control)/launch/base_control.launch"/>
+    <include file="$(find pkg_launch)/launch/urdf.launch"/>
+
+    <include file="$(find ydlidar)/launch/X2.launch"/>
+    
+    <include file="$(find asr_process)/launch/asr_process.launch"/>
+    <include file="$(find audio)/launch/audio.launch"/>
+
+</launch>

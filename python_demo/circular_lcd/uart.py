@@ -36,8 +36,8 @@ class Uart:
         self.pwm2 = pwm2
 
     def _send_data(self):
-        data = struct.pack('<BBBhhBBBB', 0x53, 0x54, 11,
-                           self.pwm1, self.pwm2,
+        data = struct.pack('<BBBhhBBBBB', 0x53, 0x54, 12,
+                           self.pwm1, self.pwm2,1,
                            0x55,0x56,0x0D,0x0A)
 
         # 发送数据

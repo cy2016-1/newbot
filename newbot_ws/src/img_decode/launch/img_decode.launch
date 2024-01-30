@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="img_decode" type="img_decode" name="img_decode" output="screen">
+ 	  
+    <param name="sub_jpeg_image_topic" value="/image_raw/compressed" type="str" />
+    <param name="pub_raw_image_topic" value="/camera/image_raw" type="str" />
+    <param name="fps_div" value="1" type="int" />
+    <param name="scale" value="0.5" type="double" />
+    
+  </node>
+</launch>

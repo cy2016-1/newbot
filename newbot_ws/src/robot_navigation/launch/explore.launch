@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<launch>
+<node pkg="explore_lite" type="explore" respawn="false" name="explore" output="screen">
+  <param name="robot_base_frame" value="base_footprint"/>
+  <param name="costmap_topic" value="map"/>
+  <param name="costmap_updates_topic" value="map_updates"/> <!--if everytime update full map, do not sub this topic-->
+  <param name="visualize" value="true"/>
+  <param name="planner_frequency" value="1.0"/> <!--规划频率hz default:1.0-->
+  <param name="progress_timeout" value="10.0"/>
+  <param name="potential_scale" value="1e-3"/> <!--default:1e-3-->
+  <param name="orientation_scale" value="0.0"/>
+  <param name="gain_scale" value="1.0"/>
+  <param name="transform_tolerance" value="0.3"/>
+  <param name="min_frontier_size" value="0.5"/>  <!--最小的未知边界长度，小于这个长度就不会去探索了 default:0.5-->
+</node>
+</launch>
+
+
+
+<launch>
+
+
+  <arg name="planner" default="dwa" doc="opt: dwa, teb"/> 
+  <arg name="use_dijkstra" default= "true"/> 
+  <arg name="move_forward_only" default="true"/>
+
+  <!-- move_base use DWA planner-->
+  <group if="$(eval planner == 'dwa')">
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <!-- use global_planner replace default navfn as global planner ,global_planner support A* and dijkstra algorithm-->
+    <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <!-- <rosparam file="$(find robot_navigation)/param/NanoRobot/global_planner_params.yaml" command="load" /> -->
+    <rosparam file="$(find robot_navigation)/config/robot/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_navigation)/config/robot/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_navigation)/config/robot/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/config/robot/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/config/robot/move_base_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/config/robot/dwa_local_planner_params.yaml" command="load" />
+    <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
+    <!--default is True,use dijkstra algorithm;set to False,usd A* algorithm-->
+    <param name="GlobalPlanner/use_dijkstra " value="$(arg use_dijkstra)" /> 
+  </node>
+
+  </group>
+  <!-- move_base use TEB planner-->
+  <group if="$(eval planner == 'teb')">
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <!-- use global_planner replace default navfn as global planner ,global_planner support A* and dijkstra algorithm-->
+    <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <!-- <rosparam file="$(find robot_navigation)/param/NanoRobot/global_planner_params.yaml" command="load" /> -->
+    <rosparam file="$(find robot_navigation)/config/robot/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_navigation)/config/robot/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_navigation)/config/robot/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/config/robot/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/config/robot/move_base_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/config/robot/teb_local_planner_params.yaml" command="load" />
+    <param name="TebLocalPlannerROS/max_vel_x_backwards" value="0.0" if="$(arg move_forward_only)" />
+    <!--default is True,use dijkstra algorithm;set to False,usd A* algorithm-->
+    <param name="GlobalPlanner/use_dijkstra " value="$(arg use_dijkstra)" />
+    <!--stage simulator takes the angle instead of the rotvel as input (twist message)-->
+
+  </node>
+  </group>
+
+</launch>

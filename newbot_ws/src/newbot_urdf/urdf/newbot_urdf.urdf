@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="newbot_urdf">
+  <link
+    name="base_footprint">
+    <inertial>
+      <origin
+        xyz="-0.00775913353599292 -4.45123436135647E-07 0.0224459106502343"
+        rpy="0 0 0" />
+      <mass
+        value="0.042003767885397" />
+      <inertia
+        ixx="5.41153310683831E-05"
+        ixy="-8.21154135385092E-10"
+        ixz="-1.40402864533751E-06"
+        iyy="3.81131720109283E-05"
+        iyz="2.455604686999E-11"
+        izz="8.53370885900122E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/base_footprint.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/base_footprint.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00245587785282561 6.33597816008611E-06 0.0543979157465607"
+        rpy="0 0 0" />
+      <mass
+        value="0.102142168850335" />
+      <inertia
+        ixx="0.000130398195368474"
+        ixy="2.30208751853264E-08"
+        ixz="1.72022592436931E-06"
+        iyy="0.00012196793906747"
+        iyz="4.42212069902519E-07"
+        izz="0.000210469525638524" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_link_jonit"
+    type="fixed">
+    <origin
+      xyz="-0.0105 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_footprint" />
+    <child
+      link="base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="3.91630628693024E-19 -1.73472347597681E-18 -0.0085314670248904"
+        rpy="0 0 0" />
+      <mass
+        value="0.0029884424924068" />
+      <inertia
+        ixx="1.05326706288393E-07"
+        ixy="-3.78653234506086E-24"
+        ixz="3.90712745724902E-23"
+        iyy="2.34938832773514E-07"
+        iyz="-7.79991359598618E-24"
+        izz="2.20411234201086E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/camera_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/camera_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.0583 0 0.0345"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="laser_link">
+    <inertial>
+      <origin
+        xyz="0.00189709243924022 1.78249593265129E-05 -0.0485203372217184"
+        rpy="0 0 0" />
+      <mass
+        value="0.243177047685504" />
+      <inertia
+        ixx="0.000323851802878699"
+        ixy="1.4458490030045E-06"
+        ixz="-7.15059430612106E-07"
+        iyy="0.000301957484260575"
+        iyz="-5.75668839299753E-07"
+        izz="0.000444598141387616" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/laser_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/laser_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_link_joint"
+    type="fixed">
+    <origin
+      xyz="0 -4.8329E-05 0.087741"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="laser_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="c_wheel">
+    <inertial>
+      <origin
+        xyz="-2.46279895643742E-08 -5.25793749051891E-08 0.00260269273033002"
+        rpy="0 0 0" />
+      <mass
+        value="0.00233535461736231" />
+      <inertia
+        ixx="6.25697387572861E-08"
+        ixy="-3.63504431582548E-10"
+        ixz="1.69638371397866E-13"
+        iyy="4.56882204112575E-08"
+        iyz="3.59337812465451E-13"
+        izz="7.82059005202535E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/c_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/c_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c_wheel_joint"
+    type="fixed">
+    <origin
+      xyz="-0.04 0 0.006"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="c_wheel" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="l_wheel">
+    <inertial>
+      <origin
+        xyz="-0.000114661874782991 0.000131055675050916 1.23032933758462E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0157291965831499" />
+      <inertia
+        ixx="2.82568469118123E-06"
+        ixy="8.65405185419472E-11"
+        ixz="7.2292113756157E-13"
+        iyy="4.8493749873191E-06"
+        iyz="-4.83694707866874E-13"
+        izz="2.82555969228873E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/l_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/l_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.010612 0.036125 0.022"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="l_wheel" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="r_wheel">
+    <inertial>
+      <origin
+        xyz="-0.000114661874782943 -0.000131055675050937 -1.2303293433092E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0157291965831499" />
+      <inertia
+        ixx="2.82568469118123E-06"
+        ixy="-8.65405185417432E-11"
+        ixz="-7.22921136372731E-13"
+        iyy="4.84937498731911E-06"
+        iyz="-4.83694709233175E-13"
+        izz="2.82555969228873E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/r_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot_urdf/meshes/r_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.010612 -0.036125 0.022"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="r_wheel" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+</robot>

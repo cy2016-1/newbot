@@ -397,7 +397,7 @@ if __name__=="__main__":
     t_cnt = 0
     for i in range(100):
         display_image = np.zeros((240, 240, 3), dtype=np.uint8)  # h,w,c 240x240x3
-        cv2.putText(display_image, "hi %d"%(i+1), (120,120), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        cv2.putText(display_image, "%d"%(i+1), (120,120), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         cv2.circle(display_image,(120,120),119,(0,0,255),1)
 
         start = time.time()

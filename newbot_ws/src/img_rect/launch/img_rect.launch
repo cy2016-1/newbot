@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="img_rect" type="img_rect" name="img_rect" output="screen">
+	  
+        <param name="camera_name" value="camera" type="str" />
+
+        <param name="sub_image_topic"   value="/camera/image_raw" type="str" />
+
+        <param name="pub_image_topic"   value="/camera/image_rect" type="str" />
+
+        <param name="calibration_file0"   value="$(find img_rect)/cfg/fisheye.yml" type="str" />
+
+        <param name="pub_camerainfo"   value="true" type="bool" />
+
+        <param name="pub_image_rect"   value="false" type="bool" />
+    </node>
+</launch>

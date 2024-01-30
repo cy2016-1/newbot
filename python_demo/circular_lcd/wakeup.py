@@ -20,7 +20,7 @@ class Logger(object):
         self.terminal.flush()
         self.log_file.flush()
 
-sys.stdout = Logger()
+#sys.stdout = Logger()
 
 link_file="_snowboydetect.so"
 if os.path.exists(link_file):

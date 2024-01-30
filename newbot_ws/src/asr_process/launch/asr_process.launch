@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="asr_process" type="asr_process" name="asr_process" output="screen">
+	  <param name="asr_cfg" value="$(find asr_process)/cfg/asr.cfg" type="str" />
+  </node>
+</launch>

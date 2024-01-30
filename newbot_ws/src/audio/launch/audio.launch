@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="audio" name="audio" type="audio.py" output="screen">
+  </node>
+
+   <node pkg="audio" name="emoji" type="emoji.py" output="screen">
+  </node>
+
+</launch>
